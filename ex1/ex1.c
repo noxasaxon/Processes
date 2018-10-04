@@ -9,6 +9,17 @@
 int main(void)
 {
     // Your code here
+    int x = 0;
+    int pid = fork();
+
+    printf("\n child %d", x);
+
+    if(pid){
+        printf("\n child %p", &x);
+        x = 13;
+        printf("\n child %p", &x);
+    }
+
 
     return 0;
 }
