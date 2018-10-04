@@ -5,10 +5,30 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define FNAME "text.txt"
 
 int main(void)
 {
-    // Your code here 
-    
+    FILE* filePointer = fopen(FNAME, "w");
+
+    int pid = fork();
+
+    if(pid == 0){
+        printf("\n pid is %d\n", (int) getpid());
+        
+        fwrite("test string", sizeof(char), strlen("test string"), filePointer);
+    }
+
+    else {
+        printf("parent's pid: %d \n", (int) getpid());
+
+        fwrite("parent string", sizeof(char), strlen("parent string"), filePointer);
+    }
+
+    //close file
+    fclose(filePointer);
+
     return 0;
 }
