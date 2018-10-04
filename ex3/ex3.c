@@ -9,7 +9,20 @@
 
 int main(void)
 {
-    // Your code here
+
+
+    int pid = fork();
+
+    if (pid == 0) {
+        printf("child print\n");
+        printf(" pid is %d\n", (int) getpid());
+    } else {
+        int test = waitpid(pid, NULL, 0);
+        
+        printf("parent print\n");
+        printf("pid is %d\n", (int) getpid());
+    }
+
 
     return 0;
 }

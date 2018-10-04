@@ -10,7 +10,22 @@
 
 int main(void)
 {
-    // Your code here    
+
+    printf("parent's pid: %d \n", (int) getpid());
+    int pid = fork();
+
+
+    if (pid == 0){
+      printf("child's pid %d\n", (int) getpid());
+
+      char *args[] = {"ls", "-l", NULL};
+      
+      execl("ls", args);
+    }
+    else{
+      int wait = waitpid(pid, NULL, 0);
+    }
+
 
     return 0;
 }
