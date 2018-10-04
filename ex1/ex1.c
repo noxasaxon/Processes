@@ -12,12 +12,14 @@ int main(void)
     int x = 0;
     int pid = fork();
 
-    printf("\n child %d", x);
-
     if(pid){
-        printf("\n child %p", &x);
+        printf("\n pid is %d, x is %d\n", (int) getpid(), x);
         x = 13;
-        printf("\n child %p", &x);
+        printf("\n pid is %d, x is %d\n", (int) getpid()), x;
+    }
+
+    if (pid == 0){
+        printf("\n pid is %d, x is %d\n", (int) getpid());
     }
 
 
